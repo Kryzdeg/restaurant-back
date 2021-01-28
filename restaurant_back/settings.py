@@ -1,6 +1,8 @@
 from pathlib import Path
+import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 SECRET_KEY = 'v9eharc-4416uk$b-dwpuu-#1op74$m-zl%xd@l#i_hv=l-(6!'
 
 DEBUG = True
@@ -59,7 +61,7 @@ WSGI_APPLICATION = 'restaurant_back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -100,3 +102,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
+
